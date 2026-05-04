@@ -1,0 +1,152 @@
+# Catalogo Feature — source of truth per tutte le feature confrontabili
+# Aggiungere nuove feature qui senza migration; non rimuovere feature in uso.
+
+# --- management ---
+- code: monthly_fee
+  label_it: Canone mensile
+  category: management
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 10
+
+- code: joint_account_allowed
+  label_it: Cointestabile
+  category: management
+  product_type: current_account
+  value_type: boolean
+  display_order: 20
+
+- code: stamp_duty_above_77_47
+  label_it: Bollo EC (giacenza > €77,47)
+  category: management
+  product_type: current_account
+  value_type: boolean
+  display_order: 30
+
+# --- cards ---
+- code: debit_card_annual_fee
+  label_it: Costo annuo carta di debito
+  category: cards
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 100
+
+- code: credit_card_included
+  label_it: Carta di credito inclusa
+  category: cards
+  product_type: current_account
+  value_type: boolean
+  display_order: 110
+
+- code: credit_card_annual_fee
+  label_it: Costo annuo carta di credito
+  category: cards
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 120
+
+- code: apple_pay_supported
+  label_it: Apple Pay / Google Wallet
+  category: cards
+  product_type: current_account
+  value_type: boolean
+  display_order: 130
+
+# --- operations ---
+- code: sepa_transfer_online
+  label_it: Bonifico SEPA online
+  category: operations
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 200
+
+- code: instant_transfer_cost
+  label_it: Bonifico istantaneo
+  category: operations
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 210
+
+- code: standing_order_cost
+  label_it: Bonifico permanente
+  category: operations
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 220
+
+- code: sdd_setup_cost
+  label_it: Addebito diretto SDD (domiciliazione)
+  category: operations
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 230
+
+- code: cbill_pagopa_supported
+  label_it: CBill / PagoPA
+  category: operations
+  product_type: current_account
+  value_type: boolean
+  display_order: 240
+
+# --- withdrawals ---
+- code: atm_withdrawal_same_bank
+  label_it: Prelievo ATM stessa banca
+  category: withdrawals
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 300
+
+- code: atm_withdrawal_other_bank_eur
+  label_it: Prelievo ATM altra banca (area EUR)
+  category: withdrawals
+  product_type: current_account
+  value_type: money_fixed
+  unit: EUR
+  display_order: 310
+
+# --- fx ---
+- code: foreign_currency_commission_pct
+  label_it: Commissione valuta non EUR
+  category: fx
+  product_type: current_account
+  value_type: percentage
+  unit: "%"
+  display_order: 400
+
+# --- digital ---
+- code: cutoff_time
+  label_it: Orario cut-off bonifici
+  category: digital
+  product_type: current_account
+  value_type: text
+  display_order: 500
+
+- code: hb_auth_method
+  label_it: Metodo autenticazione home banking
+  category: digital
+  product_type: current_account
+  value_type: text
+  display_order: 510
+
+# --- extras ---
+- code: deposit_account_available
+  label_it: Conto deposito disponibile
+  category: extras
+  product_type: current_account
+  value_type: boolean
+  display_order: 600
+
+- code: trading_available
+  label_it: Custodia titoli e trading
+  category: extras
+  product_type: current_account
+  value_type: boolean
+  display_order: 610

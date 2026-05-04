@@ -1,0 +1,82 @@
+id: a1b2c3d4-e5f6-7890-abcd-ef1234560003
+bank: bper-banca
+name: BPER On Demand Light
+slug: bper-on-demand-light
+product_type: current_account
+source_url: https://www.bper.it/privati/conti-correnti/bper-on-demand
+last_updated: "2026-02-27"
+
+features:
+  - code: monthly_fee
+    value_money: 5.30
+    notes: Canone base €5,30/mese
+    conditions:
+      - condition_type: salary_credit
+        condition_value: null
+        price_override: 0.00
+        condition_label: Gratuito con accredito stipendio o pensione
+      - condition_type: under_35
+        condition_value: null
+        price_override: 0.00
+        condition_label: Gratuito per under 35
+
+  - code: joint_account_allowed
+    value_bool: true
+
+  - code: stamp_duty_above_77_47
+    value_bool: false
+    notes: Bollo EC a carico di BPER
+
+  - code: debit_card_annual_fee
+    value_money: 0.00
+    notes: MC gratuita per nuove aperture entro il 31/07/2026
+
+  - code: credit_card_included
+    value_bool: true
+
+  - code: credit_card_annual_fee
+    value_money: 36.00
+    notes: MC o Visa da €36,00/a
+
+  - code: apple_pay_supported
+    value_bool: true
+
+  - code: sepa_transfer_online
+    value_money: 0.00
+
+  - code: instant_transfer_cost
+    value_money: 0.00
+
+  - code: standing_order_cost
+    value_money: 0.00
+
+  - code: sdd_setup_cost
+    value_money: 0.00
+
+  - code: cbill_pagopa_supported
+    value_bool: true
+
+  - code: atm_withdrawal_same_bank
+    value_money: 0.00
+    notes: Gratuito su ATM BPER
+
+  - code: atm_withdrawal_other_bank_eur
+    value_money: 2.70
+    notes: €2,70 su ATM di altre banche
+
+  - code: foreign_currency_commission_pct
+    percentage: 0.0200
+    notes: 2% su operazioni in valuta non EUR
+
+  - code: cutoff_time
+    value_text: "16:00"
+
+  - code: hb_auth_method
+    value_text: app
+    notes: Autenticazione tramite app mobile
+
+  - code: deposit_account_available
+    value_bool: true
+
+  - code: trading_available
+    value_bool: true

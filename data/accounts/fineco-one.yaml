@@ -1,0 +1,76 @@
+id: a1b2c3d4-e5f6-7890-abcd-ef1234560001
+bank: fineco-bank
+name: Fineco One
+slug: fineco-one
+product_type: current_account
+source_url: https://finecobank.com/it-it/conti-e-carte/conto-fineco/
+last_updated: "2026-02-13"
+
+features:
+  - code: monthly_fee
+    value_money: 0.00
+    notes: Sempre gratuito, nessuna condizione
+
+  - code: joint_account_allowed
+    value_bool: true
+    notes: Fino a 3 intestatari
+
+  - code: stamp_duty_above_77_47
+    value_bool: false
+    notes: Bollo EC a carico di Fineco
+
+  - code: debit_card_annual_fee
+    value_money: 0.00
+    notes: Carta virtuale gratuita; carta fisica €9,95/a + €2,25 spedizione
+
+  - code: credit_card_included
+    value_bool: true
+
+  - code: credit_card_annual_fee
+    value_money: 19.95
+    notes: MC o Visa, da €19,95/a
+
+  - code: apple_pay_supported
+    value_bool: true
+
+  - code: sepa_transfer_online
+    value_money: 0.00
+
+  - code: instant_transfer_cost
+    value_money: 0.00
+    notes: Max €2.000/cad, aumentabile fino a €50.000
+
+  - code: standing_order_cost
+    value_money: 0.00
+
+  - code: sdd_setup_cost
+    value_money: 0.00
+
+  - code: cbill_pagopa_supported
+    value_bool: true
+
+  - code: atm_withdrawal_same_bank
+    value_money: 0.00
+    notes: Gratuito su circuito Bancomat se ≥ €100; su Visa €1,45 ovunque
+
+  - code: atm_withdrawal_other_bank_eur
+    value_money: 0.00
+    notes: Gratuito in Italia se ≥ €100 su Bancomat; €1,45 su Visa o all'estero
+
+  - code: foreign_currency_commission_pct
+    percentage: 0.0000
+    notes: Zero commissioni valuta estera
+
+  - code: cutoff_time
+    value_text: "15:00"
+
+  - code: hb_auth_method
+    value_text: app_or_offline_code
+    notes: App con biometria, o codice generato da app offline
+
+  - code: deposit_account_available
+    value_bool: true
+    notes: Cashpark (conto deposito vincolato)
+
+  - code: trading_available
+    value_bool: true
