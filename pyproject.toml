@@ -23,7 +23,9 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["packages/flous_data"]
+# Internal tooling only — this repo is NOT published as a package.
+# Editable installs (`pip install -e .`) expose the schemas used by the scripts.
+packages = ["schemas"]
 
 [tool.ruff]
 target-version = "py312"

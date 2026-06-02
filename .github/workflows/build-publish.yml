@@ -3,8 +3,7 @@ name: Build & Publish
 on:
   push:
     branches: [main]
-  release:
-    types: [published]
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -42,17 +41,20 @@ jobs:
           path: dist/
           retention-days: 7
 
+  # Publish the built dataset to the CDN (Cloudflare R2). This is the ONLY
+  # distribution channel — there are no PyPI/npm packages. Consumers such as
+  # flous-api pull the data from the CDN; flous-web never reads the CDN directly.
   publish-cdn:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: flous-data-dist
           path: dist/
 
-      - name: Upload JSON to Cloudflare R2
+      - name: Upload data to Cloudflare R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -61,6 +63,10 @@ jobs:
           aws s3 cp dist/flous-data.json s3://flous-data/v1/dump.json \
             --endpoint-url "$R2_ENDPOINT" \
             --content-type "application/json" \
+            --cache-control "public, max-age=300, must-revalidate"
+          aws s3 cp dist/flous.sqlite s3://flous-data/v1/flous.sqlite \
+            --endpoint-url "$R2_ENDPOINT" \
+            --content-type "application/octet-stream" \
             --cache-control "public, max-age=300, must-revalidate"
 
       - name: Trigger flous-api data refresh
@@ -74,62 +80,3 @@ jobs:
             -H "Content-Type: application/json" \
             -H "X-Signature: sha256=$SIG" \
             -d "$PAYLOAD"
-
-  publish-pypi:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'release'
-    permissions:
-      id-token: write  # OIDC trusted publishing
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install build tools
-        run: pip install build
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: flous-data-dist
-          path: dist/
-
-      - name: Copy SQLite into package for bundling
-        run: cp dist/flous.sqlite packages/flous_data/
-
-      - name: Build wheel
-        run: python -m build --wheel
-
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'release'
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          registry-url: "https://registry.npmjs.org"
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: flous-data-dist
-          path: dist/
-
-      - name: Install JS deps + build
-        working-directory: packages/flous-data-js
-        run: |
-          npm ci
-          npm run build
-
-      - name: Publish to npm
-        working-directory: packages/flous-data-js
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public

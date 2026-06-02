@@ -54,25 +54,28 @@ data/features.yaml         ─┘                   ─► dist/flous-data.json
 
 **Deterministic builds**: `scripts/build.py` sorts all collections by slug/code before writing, so the same YAML input always produces identical output bytes.
 
-### Packages
+### Distribution
 
-- `packages/flous_data/` — Python package published to PyPI. Bundles `dist/flous.sqlite` and exposes SQLAlchemy ORM models (`db.py`). Call `get_session()` for a ready-to-use session.
-- `packages/flous-data-js/` — npm package `@flous/data`. Bundles `dist/flous-data.json` and re-exports typed helpers (`getBanks()`, `getAccounts()`, etc.).
+The dataset is distributed through **one channel only: a CDN** (Cloudflare R2,
+served at `data.flous.it`). There are **no PyPI or npm packages**.
+
+- `data.flous.it/v1/dump.json` — full dataset as JSON
+- `data.flous.it/v1/flous.sqlite` — same data as a queryable SQLite file
+
+Consumers: **flous-api** fetches from the CDN and runs the comparison logic;
+**flous-web** calls flous-api only and never reads the CDN directly.
 
 ### CI workflows
 
 - `pr-validate.yml` — runs `validate.py` + ruff + mypy on every PR and push to main.
-- `build-publish.yml` — on merge to main: builds artifacts, uploads `dump.json` to Cloudflare R2 (`data.flous.it/v1/dump.json`), triggers `flous-api` webhook. On release tag: publishes to PyPI (OIDC trusted publishing) and npm.
+- `build-publish.yml` — on push to main: builds artifacts, uploads `dump.json` and `flous.sqlite` to Cloudflare R2 (`data.flous.it/v1/`), then triggers the `flous-api` refresh webhook.
 
 ### Secrets required (GitHub Actions)
 
 | Secret | Used by |
 |--------|---------|
 | `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_ENDPOINT` | CDN publish step |
-| `FLOUS_WEBHOOK_URL` / `FLOUS_WEBHOOK_SECRET` | `flous-api` refresh trigger (HMAC SHA256) |
-| `NPM_TOKEN` | npm publish |
-
-PyPI publish uses OIDC (no token needed, configure trusted publisher on PyPI).
+| `FLOUS_WEBHOOK_URL` / `FLOUS_WEBHOOK_SECRET` | `flous-api` refresh trigger (HMAC SHA256), optional |
 
 ## Adding data
 
@@ -80,9 +83,12 @@ PyPI publish uses OIDC (no token needed, configure trusted publisher on PyPI).
 
 **New account**: add `data/accounts/{slug}.yaml` matching `schemas/account.py`. Use existing feature codes from `features.yaml`; only add new ones to `features.yaml` first.
 
-**New feature**: add to `features.yaml`, then reference from accounts. Adding a feature is a **minor** semver bump; renaming/removing is **major**.
+**New feature**: add to `features.yaml`, then reference from accounts.
 
 ## Versioning policy
+
+The `version` in `pyproject.toml` is embedded in the published `dump.json` so
+consumers can detect changes. Bump it when you change the data:
 
 | Change | Bump |
 |--------|------|
