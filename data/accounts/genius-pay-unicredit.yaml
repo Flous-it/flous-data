@@ -1,0 +1,24 @@
+id: b0e332eb-61b2-54de-ad9e-6f7dd7bfa75f
+bank: unicredit
+name: "Genius Pay – Unicredit"
+slug: genius-pay-unicredit
+product_type: current_account
+source_url: https://www.unicredit.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 0.00
+    notes: "Sempre gratuito"
+  - code: joint_account_allowed
+    value_bool: false
+  - code: stamp_duty_above_77_47
+    value_bool: true
+  - code: credit_card_included
+    value_bool: false
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: false
+  - code: trading_available
+    value_bool: false

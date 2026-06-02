@@ -1,0 +1,24 @@
+id: 6d23d81a-dfeb-5c28-8d60-92697779d768
+bank: banca-progetto
+name: "Conto Key – Banca Progetto"
+slug: conto-key-banca-progetto
+product_type: current_account
+source_url: https://www.bancaprogetto.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 0.00
+    notes: "Sempre gratuito"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: true
+  - code: credit_card_included
+    value_bool: false
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: true
+  - code: trading_available
+    value_bool: false

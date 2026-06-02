@@ -1,0 +1,24 @@
+id: 61e55703-8c2a-54e9-9017-625153cc4443
+bank: ing-bank
+name: "ING Conto Corrente Arancio Light"
+slug: ing-arancio-light
+product_type: current_account
+source_url: https://www.ing.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 0.00
+    notes: "Sempre gratuito"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: false
+  - code: credit_card_included
+    value_bool: true
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: true
+  - code: trading_available
+    value_bool: true

@@ -1,0 +1,29 @@
+id: a5357ac4-46aa-54e9-a5e8-909c53d2021e
+bank: credit-agricole
+name: "Credit Agricole Conto Online"
+slug: credit-agricole-conto-online
+product_type: current_account
+source_url: https://www.credit-agricole.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 2.00
+    notes: "Accredito stipendio/pensione"
+    conditions:
+      - condition_type: salary_credit
+        condition_value: null
+        price_override: 0.00
+        condition_label: "Accredito stipendio/pensione"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: true
+  - code: credit_card_included
+    value_bool: true
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: true
+  - code: trading_available
+    value_bool: true

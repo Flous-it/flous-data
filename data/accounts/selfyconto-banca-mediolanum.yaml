@@ -1,0 +1,29 @@
+id: 4734debc-3e3e-5a83-b801-66f0939f2d0c
+bank: banca-mediolanum
+name: "SelfyConto – Banca Mediolanum"
+slug: selfyconto-banca-mediolanum
+product_type: current_account
+source_url: https://www.bancamediolanum.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 3.75
+    notes: "€0 fino al 31/12/2027 con stipendio o spesa mensile ≥€500"
+    conditions:
+      - condition_type: salary_credit
+        condition_value: 0
+        price_override: 0.00
+        condition_label: "€0 fino al 31/12/2027 con stipendio o spesa mensile ≥€500"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: true
+  - code: credit_card_included
+    value_bool: false
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: true
+  - code: trading_available
+    value_bool: true

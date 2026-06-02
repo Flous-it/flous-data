@@ -1,0 +1,24 @@
+id: 5a69657c-4b5e-53dd-87ef-b56d61780010
+bank: fideuram
+name: "Fideuram Direct Start"
+slug: fideuram-direct-start
+product_type: current_account
+source_url: https://www.fideuram.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 5.00
+    notes: "Promo in corso (scadenza 30/06/2026)"
+  - code: joint_account_allowed
+    value_bool: false
+  - code: stamp_duty_above_77_47
+    value_bool: false
+  - code: credit_card_included
+    value_bool: true
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: true
+  - code: trading_available
+    value_bool: true

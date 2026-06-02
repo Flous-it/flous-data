@@ -1,0 +1,24 @@
+id: c8e5fed8-f2a8-5f86-b5db-3ea22ab45f5c
+bank: unicredit
+name: "Genius Buddy – Unicredit"
+slug: genius-buddy-unicredit
+product_type: current_account
+source_url: https://www.unicredit.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 0.00
+    notes: "Sempre gratuito"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: false
+  - code: credit_card_included
+    value_bool: true
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: false
+  - code: trading_available
+    value_bool: true

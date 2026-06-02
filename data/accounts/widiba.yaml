@@ -1,0 +1,33 @@
+id: a513433c-d389-5d17-a4dd-b2f28be81792
+bank: widiba
+name: "Widiba"
+slug: widiba
+product_type: current_account
+source_url: https://www.widiba.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 4.50
+    notes: "Sconto con stipendio/pensione; gratuito per under 30"
+    conditions:
+      - condition_type: under_30
+        condition_value: null
+        price_override: 0.00
+        condition_label: "Sconto con stipendio/pensione; gratuito per under 30"
+      - condition_type: salary_credit
+        condition_value: null
+        price_override: 0.00
+        condition_label: "Sconto con stipendio/pensione; gratuito per under 30"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: false
+  - code: credit_card_included
+    value_bool: true
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: true
+  - code: trading_available
+    value_bool: true

@@ -1,0 +1,29 @@
+id: 8c34908f-ec85-56fb-9218-cb32f10b1e78
+bank: isybank
+name: "Isybank Isyprime"
+slug: isybank-isyprime
+product_type: current_account
+source_url: https://www.isybank.com
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 9.90
+    notes: "Gratis per under 35 (under 40 con Carta Giovani Nazionale)"
+    conditions:
+      - condition_type: under_35
+        condition_value: null
+        price_override: 0.00
+        condition_label: "Gratis per under 35 (under 40 con Carta Giovani Nazionale)"
+  - code: joint_account_allowed
+    value_bool: false
+  - code: stamp_duty_above_77_47
+    value_bool: false
+  - code: credit_card_included
+    value_bool: true
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: false
+  - code: trading_available
+    value_bool: false

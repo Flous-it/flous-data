@@ -1,0 +1,24 @@
+id: 8759fed7-9f3e-5d71-b60b-2571da04e501
+bank: deutsche-bank
+name: "DB ContoCarta"
+slug: db-contocarta
+product_type: current_account
+source_url: https://www.deutsche-bank.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 0.00
+    notes: "Sempre gratuito"
+  - code: joint_account_allowed
+    value_bool: false
+  - code: stamp_duty_above_77_47
+    value_bool: false
+  - code: credit_card_included
+    value_bool: false
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: false
+  - code: trading_available
+    value_bool: false

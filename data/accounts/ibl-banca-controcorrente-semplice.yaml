@@ -1,0 +1,29 @@
+id: 2c853e29-b5d8-59f4-b972-2793cab45f9c
+bank: ibl-banca
+name: "IBL Banca ControCorrente Semplice"
+slug: ibl-banca-controcorrente-semplice
+product_type: current_account
+source_url: https://www.iblbanca.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 2.00
+    notes: "Stipendio/pensione oppure entrate >€800 o giacenza >€5.000"
+    conditions:
+      - condition_type: salary_credit
+        condition_value: 800
+        price_override: 0.00
+        condition_label: "Stipendio/pensione oppure entrate >€800 o giacenza >€5.000"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: true
+  - code: credit_card_included
+    value_bool: false
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: true
+  - code: trading_available
+    value_bool: false

@@ -1,0 +1,24 @@
+id: 74202a96-ef6c-5c99-a50a-af0b4c748a18
+bank: banco-bpm
+name: "Conto You – Banco BPM"
+slug: conto-you-banco-bpm
+product_type: current_account
+source_url: https://www.bancobpm.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 4.00
+    notes: "Vedi condizioni sul sito"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: true
+  - code: credit_card_included
+    value_bool: false
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: false
+  - code: trading_available
+    value_bool: true

@@ -1,0 +1,24 @@
+id: bb6d64c9-3909-528e-b85c-92db778d4724
+bank: banco-bpm
+name: "WeBank – Banco BPM"
+slug: webank-banco-bpm
+product_type: current_account
+source_url: https://www.webank.it
+last_updated: "2026-06-02"
+
+features:
+  - code: monthly_fee
+    value_money: 2.00
+    notes: "Vedi condizioni sul sito"
+  - code: joint_account_allowed
+    value_bool: true
+  - code: stamp_duty_above_77_47
+    value_bool: true
+  - code: credit_card_included
+    value_bool: true
+  - code: apple_pay_supported
+    value_bool: true
+  - code: deposit_account_available
+    value_bool: false
+  - code: trading_available
+    value_bool: true
