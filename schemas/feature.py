@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from enum import Enum
+from enum import StrEnum
+
 from pydantic import BaseModel
 
 
-class ValueType(str, Enum):
+class ValueType(StrEnum):
     boolean = "boolean"
     money_fixed = "money_fixed"
     money_with_quota = "money_with_quota"
@@ -12,7 +13,7 @@ class ValueType(str, Enum):
     text = "text"
 
 
-class Category(str, Enum):
+class Category(StrEnum):
     management = "management"
     cards = "cards"
     operations = "operations"

@@ -1,19 +1,19 @@
 from __future__ import annotations
 
 from decimal import Decimal
-from enum import Enum
+from enum import StrEnum
 
 from pydantic import BaseModel, model_validator
 
 
-class ProductType(str, Enum):
+class ProductType(StrEnum):
     current_account = "current_account"
     deposit = "deposit"
     mortgage = "mortgage"
     credit_card = "credit_card"
 
 
-class ConditionType(str, Enum):
+class ConditionType(StrEnum):
     salary_credit = "salary_credit"
     age_below = "age_below"
     age_above = "age_above"
@@ -43,7 +43,7 @@ class AccountFeatureYAML(BaseModel):
     conditions: list[FeaturePrice] = []
 
     @model_validator(mode="after")
-    def check_value_type_consistency(self) -> "AccountFeatureYAML":
+    def check_value_type_consistency(self) -> AccountFeatureYAML:
         populated = [
             f for f in ["value_money", "value_bool", "value_text", "percentage"]
             if getattr(self, f) is not None
@@ -51,10 +51,13 @@ class AccountFeatureYAML(BaseModel):
         has_quota = self.free_quota is not None or self.unit_cost is not None
         if len(populated) > 1:
             raise ValueError(
-                f"feature {self.code!r}: only one value field may be set, got {populated}"
+                f"feature {self.code!r}: only one value field may be set, "
+                f"got {populated}"
             )
         if has_quota and self.value_bool is not None:
-            raise ValueError(f"feature {self.code!r}: quota fields incompatible with value_bool")
+            raise ValueError(
+                f"feature {self.code!r}: quota fields incompatible with value_bool"
+            )
         return self
 
 

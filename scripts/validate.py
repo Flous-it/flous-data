@@ -67,7 +67,9 @@ def main() -> int:
                     f"{path.name}: feature code {feat.code!r} not in features.yaml"
                 )
             else:
-                _check_value_type_consistency(path.name, feat, features[feat.code], errors)
+                _check_value_type_consistency(
+                    path.name, feat, features[feat.code], errors
+                )
 
     if errors:
         print(f"VALIDATION FAILED — {len(errors)} error(s):\n")
@@ -99,15 +101,17 @@ def _check_value_type_consistency(
 
     mismatch: str | None = None
     if vt == ValueType.boolean and not has("value_bool"):
-        mismatch = f"value_type=boolean requires value_bool"
+        mismatch = "value_type=boolean requires value_bool"
     elif vt == ValueType.money_fixed and not has("value_money"):
-        mismatch = f"value_type=money_fixed requires value_money"
-    elif vt == ValueType.money_with_quota and not (has("free_quota") or has("unit_cost")):
-        mismatch = f"value_type=money_with_quota requires free_quota or unit_cost"
+        mismatch = "value_type=money_fixed requires value_money"
+    elif vt == ValueType.money_with_quota and not (
+        has("free_quota") or has("unit_cost")
+    ):
+        mismatch = "value_type=money_with_quota requires free_quota or unit_cost"
     elif vt == ValueType.percentage and not has("percentage"):
-        mismatch = f"value_type=percentage requires percentage"
+        mismatch = "value_type=percentage requires percentage"
     elif vt == ValueType.text and not has("value_text"):
-        mismatch = f"value_type=text requires value_text"
+        mismatch = "value_type=text requires value_text"
 
     if mismatch:
         errors.append(f"{filename} [{code}]: {mismatch}")
