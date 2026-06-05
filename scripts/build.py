@@ -13,6 +13,7 @@ import uuid
 from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -26,7 +27,7 @@ from schemas import Account, Bank, Feature  # noqa: E402
 # Helpers
 # ---------------------------------------------------------------------------
 
-def load_yaml(path: Path) -> dict | list:
+def load_yaml(path: Path) -> Any:
     with path.open(encoding="utf-8") as f:
         return yaml.safe_load(f)
 
@@ -44,17 +45,17 @@ def _new_uuid() -> str:
 # ---------------------------------------------------------------------------
 
 def load_data() -> tuple[list[Bank], list[Feature], list[Account]]:
-    features_raw: list[dict] = load_yaml(ROOT / "data" / "features.yaml")  # type: ignore[assignment]
+    features_raw: list[dict[str, Any]] = load_yaml(ROOT / "data" / "features.yaml")
     features = [Feature(**r) for r in sorted(features_raw, key=lambda x: x["code"])]
 
     banks = [
-        Bank(**load_yaml(p))  # type: ignore[arg-type]
+        Bank(**load_yaml(p))
         for p in sorted((ROOT / "data" / "banks").glob("*.yaml"))
     ]
     banks.sort(key=lambda b: b.slug)
 
     accounts = [
-        Account(**load_yaml(p))  # type: ignore[arg-type]
+        Account(**load_yaml(p))
         for p in sorted((ROOT / "data" / "accounts").glob("*.yaml"))
     ]
     accounts.sort(key=lambda a: a.slug)
@@ -212,7 +213,7 @@ def build_json(
     version: str,
     built_at: str,
 ) -> Path:
-    def serialize_account(acc: Account) -> dict:
+    def serialize_account(acc: Account) -> dict[str, Any]:
         return {
             "id": acc.id,
             "bank_id": bank_slug_to_id[acc.bank],

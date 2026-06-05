@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from typing import Any
 
 import yaml
 from pydantic import ValidationError
@@ -17,7 +18,7 @@ sys.path.insert(0, str(ROOT))
 from schemas import Account, Bank, Feature  # noqa: E402
 
 
-def load_yaml(path: Path) -> dict:
+def load_yaml(path: Path) -> Any:
     with path.open(encoding="utf-8") as f:
         return yaml.safe_load(f)
 
@@ -26,7 +27,7 @@ def main() -> int:
     errors: list[str] = []
 
     # --- features ---
-    features_raw: list[dict] = load_yaml(ROOT / "data" / "features.yaml")
+    features_raw: list[dict[str, Any]] = load_yaml(ROOT / "data" / "features.yaml")
     features: dict[str, Feature] = {}
     for raw in features_raw:
         try:
