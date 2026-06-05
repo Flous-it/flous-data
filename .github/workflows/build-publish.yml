@@ -48,6 +48,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    env:
+      FLOUS_WEBHOOK_URL: ${{ secrets.FLOUS_WEBHOOK_URL }}
+      FLOUS_WEBHOOK_SECRET: ${{ secrets.FLOUS_WEBHOOK_SECRET }}
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -71,9 +74,7 @@ jobs:
             --cache-control "public, max-age=300, must-revalidate"
 
       - name: Trigger flous-api data refresh
-        env:
-          FLOUS_WEBHOOK_URL: ${{ secrets.FLOUS_WEBHOOK_URL }}
-          FLOUS_WEBHOOK_SECRET: ${{ secrets.FLOUS_WEBHOOK_SECRET }}
+        if: ${{ env.FLOUS_WEBHOOK_URL != '' }}
         run: |
           PAYLOAD='{"event":"data_updated","version":"${{ needs.build.outputs.version }}"}'
           SIG=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -hmac "$FLOUS_WEBHOOK_SECRET" | sed 's/.* //')
