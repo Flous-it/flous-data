@@ -48,6 +48,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    environment: prod
     env:
       FLOUS_WEBHOOK_URL: ${{ secrets.FLOUS_WEBHOOK_URL }}
       FLOUS_WEBHOOK_SECRET: ${{ secrets.FLOUS_WEBHOOK_SECRET }}
