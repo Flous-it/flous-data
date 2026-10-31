@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Questions & discussion
+    url: https://github.com/Flous-it/flous-data/discussions
+    about: Ask how to model something, propose an idea, or get help before opening a PR.
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/Flous-it/flous-data/security/advisories/new
+    about: Privately report a vulnerability in the tooling or CI (not data errors).

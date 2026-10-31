@@ -1,0 +1,34 @@
+name: 🛠️ Tooling bug / feature request
+description: A problem or idea for the scripts, schemas, CI, or docs (not the data)
+title: "<short summary>"
+labels: ["tooling"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for the build/validate scripts, schemas, CI, or docs.
+        For wrong data, use the **Data correction** template instead.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Is this a bug or a feature request?
+      options:
+        - Bug
+        - Feature request
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened / what would you like? For bugs, include steps to reproduce and the output.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment (for bugs)
+      description: OS, Python version, command you ran.
+      placeholder: "macOS 14, Python 3.12.3, `python scripts/validate.py`"
+    validations:
+      required: false

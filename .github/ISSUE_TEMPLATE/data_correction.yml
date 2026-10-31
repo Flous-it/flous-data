@@ -1,0 +1,54 @@
+name: 🐞 Data correction
+description: Report incorrect or outdated data (a fee, condition, code, etc.)
+title: "data: <bank/account> — <what's wrong>"
+labels: ["data", "correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the data accurate! You don't need to write any
+        code — just tell us what's wrong and where the correct value comes from.
+  - type: input
+    id: account
+    attributes:
+      label: Account or bank
+      description: Which account/bank file is affected? (slug or name)
+      placeholder: "bunq-free"
+    validations:
+      required: true
+  - type: input
+    id: feature
+    attributes:
+      label: Which value is wrong?
+      description: Feature code or field
+      placeholder: "monthly_fee"
+    validations:
+      required: true
+  - type: input
+    id: current
+    attributes:
+      label: Current value in the dataset
+      placeholder: "9.90"
+    validations:
+      required: true
+  - type: input
+    id: correct
+    attributes:
+      label: Correct value
+      placeholder: "0.00"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL (official bank page / fee sheet)
+      placeholder: "https://www.bank.it/.../foglio-informativo.pdf"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Context, screenshots, the relevant quote from the source, etc.
+    validations:
+      required: false

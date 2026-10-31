@@ -13,3 +13,5 @@ node_modules/
 *.js.map
 data/quarantine/
 CLAUDE.md
+
+.DS_Store

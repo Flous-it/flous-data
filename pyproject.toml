@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "flous-data"
 version = "0.1.0"
 description = "Open dataset of Italian financial things — source of truth for Flous.it"
-license = { text = "Apache-2.0" }
+license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

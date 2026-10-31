@@ -1,0 +1,51 @@
+name: 🏦 New bank / account
+description: Request (or propose) adding a bank or account to the dataset
+title: "data: add <bank/account name>"
+labels: ["data", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Want a bank or account added? Fill this in. If you're comfortable with
+        YAML, a Pull Request is even better — see
+        [CONTRIBUTING.md](https://github.com/Flous-it/flous-data/blob/main/CONTRIBUTING.md#adding-or-editing-data).
+  - type: input
+    id: bank
+    attributes:
+      label: Bank name
+      placeholder: "Fineco"
+    validations:
+      required: true
+  - type: input
+    id: account
+    attributes:
+      label: Account / product name
+      placeholder: "FincoOne"
+    validations:
+      required: true
+  - type: dropdown
+    id: product_type
+    attributes:
+      label: Product type
+      options:
+        - current_account
+        - deposit
+        - mortgage
+        - credit_card
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source URL
+      description: Product page or fee sheet (Foglio Informativo)
+      placeholder: "https://finecobank.com/..."
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Key details
+      description: Monthly fee, card costs, notable conditions — anything you already know.
+    validations:
+      required: false
