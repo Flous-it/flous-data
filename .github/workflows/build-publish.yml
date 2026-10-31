@@ -53,7 +53,7 @@ jobs:
       FLOUS_WEBHOOK_URL: ${{ secrets.FLOUS_WEBHOOK_URL }}
       FLOUS_WEBHOOK_SECRET: ${{ secrets.FLOUS_WEBHOOK_SECRET }}
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: flous-data-dist
           path: dist/
